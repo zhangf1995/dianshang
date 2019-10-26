@@ -1,0 +1,12 @@
+server:
+  port: 8080
+eureka:
+  server:
+    enable-self-preservation: false
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://serverOne:8080/eureka/   #后期集群
+  instance:
+    hostname: serverOne

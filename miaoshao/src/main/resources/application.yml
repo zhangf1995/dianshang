@@ -1,0 +1,11 @@
+server:
+  port: 8090
+eureka:
+  client:
+    service-url:
+      defaultZone: http://serverOne:8080/eureka/
+  instance:
+    instance-id: miaosha
+spring:
+  application:
+    name: server-miaosha
