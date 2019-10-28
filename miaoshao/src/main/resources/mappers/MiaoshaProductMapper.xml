@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dianshang.miaoshao.mapper.MiaoshaProductMapper" >
+    <resultMap id="BaseResultMap" type="com.dianshang.miaoshao.entity.MiaoshaProduct" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="product_id" property="productId" jdbcType="VARCHAR" />
+        <result column="start_time" property="startTime" jdbcType="DATETIME" />
+        <result column="end_time" property="endTime" jdbcType="DATETIME" />
+        <result column="stock_num" property="stockNum" jdbcType="DECIMAL" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    user_id, product_id, stock_num, start_time, end_time
+    </sql>
+    <select id="queryByCondition" resultType="com.dianshang.miaoshao.entity.MiaoshaProduct">
+
+    </select>
+
+</mapper>

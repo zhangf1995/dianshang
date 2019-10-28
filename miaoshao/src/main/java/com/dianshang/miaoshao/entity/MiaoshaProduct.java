@@ -1,5 +1,6 @@
 package com.dianshang.miaoshao.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -12,8 +13,9 @@ import java.util.Date;
  * @Description: 秒杀商品
  */
 @Data
+@TableName("miaosha_product")
 public class MiaoshaProduct {
-    private String userId;
+    private String id;
     private String productId;
     private BigDecimal stockNum;
     private Date startTime;
