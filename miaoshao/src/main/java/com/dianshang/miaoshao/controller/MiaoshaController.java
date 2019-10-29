@@ -9,6 +9,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @BelongsProject: dianshang
@@ -17,11 +18,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @Description: 秒杀controller
  */
 @RequestMapping("/miaosha")
+@RestController
 public class MiaoshaController {
 
     @Autowired
     private MiaoshaProductService miaoshaProductService;
 
+    /**
+     * 秒杀核心业务代码
+     * @param miaoshaProduct
+     * @return
+     */
     @RequestMapping(value = "/addMiaosha", method = RequestMethod.POST)
     public Result addMiaosha(@RequestBody MiaoshaProduct miaoshaProduct) {
         if (!ObjectUtils.isEmpty(miaoshaProduct) && !StringUtils.isEmpty(miaoshaProduct.getId())) {

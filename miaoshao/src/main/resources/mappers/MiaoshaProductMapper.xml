@@ -4,15 +4,34 @@
     <resultMap id="BaseResultMap" type="com.dianshang.miaoshao.entity.MiaoshaProduct" >
         <id column="id" property="id" jdbcType="VARCHAR" />
         <result column="product_id" property="productId" jdbcType="VARCHAR" />
-        <result column="start_time" property="startTime" jdbcType="DATETIME" />
-        <result column="end_time" property="endTime" jdbcType="DATETIME" />
+        <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+        <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
         <result column="stock_num" property="stockNum" jdbcType="DECIMAL" />
     </resultMap>
     <sql id="Base_Column_List" >
-    user_id, product_id, stock_num, start_time, end_time
+        id,product_id, stock_num, start_time, end_time
     </sql>
-    <select id="queryByCondition" resultType="com.dianshang.miaoshao.entity.MiaoshaProduct">
-
+    <select id="queryByCondition" parameterType="com.dianshang.miaoshao.query.MiaoshaProductQuery" resultType="com.dianshang.miaoshao.entity.MiaoshaProduct">
+        select
+        <include refid="Base_Column_List"/>
+        from miaosha_product
+        <where>
+            <if test="id != null and id !=''">
+                and id=#{id}
+            </if>
+            <if test="productId != null and productId !=''">
+                and product_id=#{productId}
+            </if>
+            <if test="startTime != null">
+                and start_time=#{startTime}
+            </if>
+            <if test="endTime != null">
+                and end_time=#{endTime}
+            </if>
+        </where>
+        <if test="currentNo != null">
+            limit #{currentNo},#{pageSize}
+        </if>
     </select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.dianshang.miaoshao.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.dianshang.common.entity.Page;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -14,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @TableName("miaosha_product")
-public class MiaoshaProduct {
+public class MiaoshaProduct{
     private String id;
     private String productId;
     private BigDecimal stockNum;

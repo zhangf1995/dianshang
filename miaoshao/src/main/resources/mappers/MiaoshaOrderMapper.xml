@@ -6,14 +6,22 @@
         <result column="order_id" property="orderId" jdbcType="VARCHAR" />
         <result column="user_id" property="userId" jdbcType="VARCHAR" />
         <result column="miaosha_id" property="miaoshaId" jdbcType="VARCHAR" />
-        <result column="create_time" property="createTime" jdbcType="DATETIME" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
         <result column="status" property="status" jdbcType="TINYINT" />
     </resultMap>
-    <sql id="Base_Column_List" >
-    user_id, product_id, stock_num, start_time, end_time
-    </sql>
-    <select id="queryByCondition" resultType="com.dianshang.miaoshao.entity.MiaoshaOrder">
-
+    <select id="queryByCondition" parameterType="com.dianshang.miaoshao.query.MiaoshaOrderQuery" resultType="com.dianshang.miaoshao.entity.MiaoshaOrder">
+        select miaosha_order.* from miaosha_order
+        <where>
+            <if test="miaoshaId != null and miaoshaId !=''">
+                and miaosha_id=#{miaoshaId}
+            </if>
+            <if test="userId != null and userId != ''">
+                and user_id=#{userId}
+            </if>
+        </where>
+        <if test="currentNo != null">
+            limit #{currentNo},#{pageSize}
+        </if>
     </select>
 
 </mapper>

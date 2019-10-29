@@ -12,6 +12,10 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/miaosha?characterEncoding=utf8&useSSL=true&nullCatalogMeansCurrent=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
 mybatis-plus:
   mapper-locations: classpath:mappers/*.xml

@@ -10,4 +10,10 @@ public interface MiaoshaOrderService {
      * @return
      */
     MiaoshaOrder queryByCondition(MiaoshaOrderQuery miaoshaOrderQuery);
+
+    /**
+     * 保存秒杀订单数据
+     * @param newMiaoshaOrder
+     */
+    void save(MiaoshaOrder newMiaoshaOrder);
 }

@@ -3,6 +3,8 @@ package com.dianshang.miaoshao.query;
 import com.dianshang.common.entity.Page;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @BelongsProject: dianshang
  * @Author: zf
@@ -13,4 +15,6 @@ import lombok.Data;
 public class MiaoshaProductQuery extends Page {
     private String id;
     private String productId;
+    private Date startTime;
+    private Date endTime;
 }

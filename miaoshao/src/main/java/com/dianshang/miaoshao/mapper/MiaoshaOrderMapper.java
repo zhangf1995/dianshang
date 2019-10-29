@@ -3,7 +3,9 @@ package com.dianshang.miaoshao.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.dianshang.miaoshao.entity.MiaoshaOrder;
 import com.dianshang.miaoshao.query.MiaoshaOrderQuery;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface MiaoshaOrderMapper extends BaseMapper<MiaoshaOrder> {
 
     /**

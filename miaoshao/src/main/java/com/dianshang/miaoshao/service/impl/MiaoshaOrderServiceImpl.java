@@ -27,5 +27,14 @@ public class MiaoshaOrderServiceImpl implements MiaoshaOrderService {
     public MiaoshaOrder queryByCondition(MiaoshaOrderQuery miaoshaOrderQuery) {
         return mapper.queryByCondition(miaoshaOrderQuery);
     }
+
+    /**
+     * 保存秒杀订单数据
+     * @param newMiaoshaOrder
+     */
+    @Override
+    public void save(MiaoshaOrder newMiaoshaOrder) {
+        mapper.insert(newMiaoshaOrder);
+    }
 }
 
