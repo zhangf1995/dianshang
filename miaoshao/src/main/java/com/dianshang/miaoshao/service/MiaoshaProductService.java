@@ -9,5 +9,13 @@ public interface MiaoshaProductService {
      * @param miaoshaProduct
      * @return
      */
-    void miaoshaStart(MiaoshaProduct miaoshaProduct) throws Exception;
+    //void miaoshaStart(MiaoshaProduct miaoshaProduct) throws Exception;
+
+    void syncMiaoShaStart(MiaoshaProduct miaoshaProduct) throws Exception;
+
+    /**
+     * 新增秒杀数据
+     * @param miaoshaProduct
+     */
+    void addMiaoshaProduct(MiaoshaProduct miaoshaProduct) throws Exception;
 }

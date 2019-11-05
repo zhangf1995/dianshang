@@ -1,6 +1,7 @@
 package com.dianshang.miaoshao.controller;
 import com.dianshang.common.en.StateCode;
 import com.dianshang.common.resp.Result;
+import com.dianshang.common.utils.SnowFlake;
 import com.dianshang.miaoshao.entity.MiaoshaProduct;
 import com.dianshang.miaoshao.service.MiaoshaProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,13 @@ public class MiaoshaController {
      * @param miaoshaProduct
      * @return
      */
-    @RequestMapping(value = "/addMiaosha", method = RequestMethod.POST)
-    public Result addMiaosha(@RequestBody MiaoshaProduct miaoshaProduct) {
+    @RequestMapping(value = "/startMiaosha", method = RequestMethod.POST)
+    public Result startMiaosha(@RequestBody MiaoshaProduct miaoshaProduct) {
         if (!ObjectUtils.isEmpty(miaoshaProduct) && !StringUtils.isEmpty(miaoshaProduct.getId())) {
             //秒杀核心流程
             try{
-                miaoshaProductService.miaoshaStart(miaoshaProduct);
+                //miaoshaProductService.miaoshaStart(miaoshaProduct);
+                miaoshaProductService.syncMiaoShaStart(miaoshaProduct);
             }catch (Exception e){
                 return Result.me().response(StateCode.FAIL.getCode(),e.getMessage());
             }
@@ -44,4 +46,20 @@ public class MiaoshaController {
         }
         return Result.me().response(StateCode.SUCCESS.getCode(),StateCode.SUCCESS.getMsg());
     }
+
+    @RequestMapping(value = "/addMiaosha",method = RequestMethod.POST)
+    public Result addMiaosha(@RequestBody MiaoshaProduct miaoshaProduct){
+        if(!ObjectUtils.isEmpty(miaoshaProduct)){
+            try{
+                miaoshaProductService.addMiaoshaProduct(miaoshaProduct);
+            }catch (Exception e){
+                return Result.me().response(StateCode.FAIL.getCode(),e.getMessage());
+            }
+        }else{
+            //暂时这么写
+            return Result.me().response(StateCode.FAIL.getCode(),"");
+        }
+        return Result.me().response(StateCode.SUCCESS.getCode(),StateCode.SUCCESS.getMsg());
+    }
+
 }
