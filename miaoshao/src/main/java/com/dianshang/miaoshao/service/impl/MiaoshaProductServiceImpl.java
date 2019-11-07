@@ -55,7 +55,7 @@ public class MiaoshaProductServiceImpl implements MiaoshaProductService {
     private final Lock lock = new ReentrantLock();
 
     /**
-     * 秒杀核心代码（加锁）,很大情况下保证了数据的一致性，但依旧可能会出现线程安全问题（数据库事务提交慢）
+     * 秒杀核心代码（加锁）,很大情况下保证了数据的一致性，但依旧可能会出现线程安全问题（数据库事务提交慢）,通过redis来解决上述问题
      *
      * @param miaoshaProduct
      * @return
@@ -67,7 +67,7 @@ public class MiaoshaProductServiceImpl implements MiaoshaProductService {
         try {
             Object valueObj = redisTemplate.opsForValue().get(MiaoshaProductServiceImpl.STOCK_NUM + miaoshaProduct.getId());
             if (null == valueObj) {
-                throw new Exception("该秒杀活动已结束");
+                throw new Exception("该秒杀活动已结束或商品已被抢完");
             }
             MiaoshaProduct product = JSONObject.parseObject(String.valueOf(valueObj), MiaoshaProduct.class);
             //判断库存是否充足
@@ -114,6 +114,7 @@ public class MiaoshaProductServiceImpl implements MiaoshaProductService {
                     throw new Exception("您正在秒杀该商品，请勿重复");
                 }
             } else {
+                redisTemplate.delete(STOCK_NUM + miaoshaProduct.getId());
                 failAtomic.incrementAndGet();
                 log.info("failAtomic is {}", failAtomic.get());
                 throw new Exception("您的手慢了，该秒杀商品已卖完");

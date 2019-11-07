@@ -19,3 +19,5 @@ spring:
     password: root
 mybatis-plus:
   mapper-locations: classpath:mappers/*.xml
+#logging:
+  #config: config/miaosha-logback.xml
