@@ -69,4 +69,5 @@ public class MiaoshaController {
         return Result.me().response(StateCode.SUCCESS.getCode(),StateCode.SUCCESS.getMsg());
     }
 
+
 }

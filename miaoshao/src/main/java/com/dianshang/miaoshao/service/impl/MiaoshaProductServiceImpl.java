@@ -82,7 +82,9 @@ public class MiaoshaProductServiceImpl implements MiaoshaProductService {
                     miaoshaOrderQuery.setMiaoshaId(miaoshaProduct.getId());
                     miaoshaOrderQuery.setProductId(product.getProductId());
                     //暂时写死，后期通过sso实现分布式情况下用户信息的全局化
-                    String userId = UUID.randomUUID().toString().replace("-", "");
+                    //String userId = UUID.randomUUID().toString().replace("-", "");
+                    //测试分布式锁情况下，是否会出现同一个用户秒杀多次
+                    String userId = "2";
                     miaoshaOrderQuery.setUserId(userId);
                     MiaoshaOrder miaoshaOrder = miaoshaOrderService.queryByCondition(miaoshaOrderQuery);
                     if (ObjectUtils.isEmpty(miaoshaOrder)) {
