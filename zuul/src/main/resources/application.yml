@@ -1,0 +1,19 @@
+server:
+  port: 8070
+eureka:
+  instance:
+    hostname: zuul
+    instance-id: zuul
+  client:
+    service-url:
+      defaultZone: http://serverOne:8080/eureka/
+zuul:
+  routes:
+    miaosha:
+      path: /miaosha/**
+      #url: http://localhost:8090
+      serviceId: miaosha
+      strip-prefix: false
+spring:
+  application:
+    name: zuul
