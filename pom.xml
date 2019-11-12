@@ -21,6 +21,7 @@
         <module>miaoshao</module>
         <module>order</module>
         <module>common</module>
+        <module>zuul</module>
     </modules>
 
     <dependencies>
