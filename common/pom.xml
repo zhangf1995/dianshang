@@ -34,11 +34,10 @@
             </exclusions>
         </dependency>
         <!--quartz-->
-        <!--Quartz-->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-            <version>2.2.1</version>
+            <version>2.3.0</version>
             <exclusions>
                 <exclusion>
                     <artifactId>slf4j-api</artifactId>
