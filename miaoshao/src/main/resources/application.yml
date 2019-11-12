@@ -1,5 +1,7 @@
 server:
   port: 8090
+  servlet:
+    context-path: /miaosha
 eureka:
   client:
     service-url:
@@ -8,7 +10,7 @@ eureka:
     instance-id: miaosha
 spring:
   application:
-    name: server-miaosha
+    name: miaosha
   redis:
     host: 127.0.0.1
     port: 6379
