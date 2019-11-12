@@ -7,6 +7,6 @@ eureka:
     register-with-eureka: false
     fetch-registry: false
     service-url:
-      defaultZone: http://serverOne:8080/eureka/   #后期集群
+      defaultZone: http://serverOne:8080/eureka/
   instance:
     hostname: serverOne
